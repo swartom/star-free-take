@@ -36,9 +36,16 @@ int write_file(sigma* data,char* file) {
 
 int main() {
     double n = 0;
-    srand(time(NULL)); // randomize seed
 
-    double get_random() { return (double)rand() / (double)RAND_MAX; }
+
+    double get_random() {
+        unsigned int myRandomData[1];
+        arc4random_buf(myRandomData, sizeof myRandomData);
+        srand(myRandomData[0]); // randomize seed
+        return (double)rand() / (double)RAND_MAX;
+    }
+
+    /* double get_random() { return (double)rand() / (double)RAND_MAX; } */
     sigma* data = malloc(sizeof(sigma) * MAX_WORD);
 
     for (int j = 0; j < COUNT; j ++){
