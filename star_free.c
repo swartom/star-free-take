@@ -11,7 +11,7 @@ typedef struct sigma {
 #define COUNT 100
 #define MAX_GRAPH 100000
 #define MAX_WORD MAX_GRAPH*1
-#define P .7
+#define P .5
 
 int write_file(sigma* data,char* file) {
     FILE *fptr;
