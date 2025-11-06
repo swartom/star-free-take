@@ -8,10 +8,10 @@ typedef struct sigma {
     uint32_t x;
 } sigma;
 
-#define COUNT 100
+#define COUNT 1
 #define MAX_GRAPH 100000
-#define MAX_WORD MAX_GRAPH*1
-#define P .5
+int MAX_WORD;
+double P = .5;
 
 int write_file(sigma* data,char* file) {
     FILE *fptr;
@@ -34,7 +34,31 @@ int write_file(sigma* data,char* file) {
     return 0;
 }
 
-int main() {
+int write_file_degree(int* data,char* file) {
+    FILE *fptr;
+    fptr = fopen(file, "w");
+    for(int i = 0; i < MAX_WORD; i ++) {
+        fprintf(fptr, "%d %d\n",i+1,data[i]);
+    }
+    fclose(fptr);
+    return 0;
+}
+
+
+
+
+
+
+
+int main(int argc, char* argv[]) {
+
+
+    int d = 1;
+
+    sscanf(argv[1],"%d", &d);
+    MAX_WORD = MAX_GRAPH*d;
+    sscanf(argv[2], "%lf", &P);
+
     double n = 0;
 
 
@@ -63,6 +87,7 @@ int main() {
         char buffer[20];
         sprintf(buffer, "graph%d.adjlist", j);
         write_file(data,buffer);
+
     }
     free(data);
 }

@@ -27,18 +27,18 @@ config = [(.25,1),
 ]
 import os
 
-for i in range(15):
-    ax2 = fig.add_subplot(5,3,1+i)
+for i in range(len(config)):
+    ax2 = fig.add_subplot(len(config)//3,3,1+i)
     p,n = config[i]
     print(p,n)
     os.system(f"./star_free {n} {p}")
-    if i < 3:
-        ax2.set_title(f"p={p}",fontsize=12)
+    # if i < 3:
+    ax2.set_title(f"p={p}",fontsize=12)
     if i%3 == 0:
         ax2.set_ylabel(f'w = {n}n',fontsize=12)
     # if i > 5:
     #     ax2.set_xlabel('Degree',fontsize=8)
-    for i in range(25):
+    for i in range(1):
         G = nx.read_adjlist(f"graph{i}.adjlist")
         g = G.to_undirected()
 

@@ -6,7 +6,7 @@
 
 run:
 	gcc -Ofast star_free.c -o star_free
-	./star_free
+	./star_free 1 0.5
 
 PHONY: run
 
