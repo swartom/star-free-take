@@ -87,7 +87,6 @@ int main(int argc, char* argv[]) {
         char buffer[20];
         sprintf(buffer, "graph%d.adjlist", j);
         write_file(data,buffer);
-
-    }
+    }    
     free(data);
 }
